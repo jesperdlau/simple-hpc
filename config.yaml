@@ -1,0 +1,13 @@
+hyper:
+  lr: 0.001
+  epochs: 10
+  batch_size: 32
+  hidden_dim: 128
+  seed: 42
+  input_dim: 784
+  output_dim: 10
+  patience: 5
+data_path: "data/"
+wandb:
+  project: "mnist"
+  entity: "jesperdlau"
