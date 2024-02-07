@@ -39,7 +39,7 @@
 module load python3/3.10.7
 source /zhome/2e/b/169155/projects/simple-hpc/.venv/bin/activate
 
-echo "Environment variables:"
+echo "Environment variables within job:"
 echo $arg1
 echo $arg2
 echo $WANDB_API_KEY
