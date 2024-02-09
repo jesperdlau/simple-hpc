@@ -4,13 +4,8 @@ import hydra
 import os
 
 # Set environment variable
-<<<<<<< Updated upstream
 os.environ['WANDB_API_KEY'] = "your_api_key"
 print(os.environ['WANDB_API_KEY'])
-=======
-os.environ['WANDB_API_KEY'] = "8d8198f8b41c68eed39ef9021f8bea9633eb2f6e" 
-print(os.environ['MY_VARIABLE'])
->>>>>>> Stashed changes
 
 # 
 @hydra.main(config_name="config.yaml", config_path="./", version_base="1.3")
