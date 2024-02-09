@@ -55,7 +55,7 @@ class Trainer():
                 loss = self.criterion(output, target)
                 loss.backward()
                 self.optimizer.step()
-                training_loss += loss.item()
+                training_loss += loss.item() * len(data)
             
             self.model.eval()
             valid_loss = 0.0
@@ -63,13 +63,14 @@ class Trainer():
                 data, target = data.to(self.device), target.to(self.device)
                 output = self.model(data)
                 loss = self.criterion(output, target)
-                valid_loss += loss.item()
-                
-            wandb.log({"training_loss": training_loss / len(train_loader)})
-            wandb.log({"val_loss": valid_loss / len(valid_loader)})
+                valid_loss += loss.item() * len(data)
+            
+            avg_train_loss = training_loss / len(train_loader.dataset)
+            avg_valid_loss = valid_loss / len(valid_loader.dataset)
+            wandb.log({"training_loss": avg_train_loss, "val_loss": avg_valid_loss})
             print(f"Epoch: {epoch} / {self.config.hyper.epochs}")
-            print(f"training_loss: {training_loss / len(train_loader)}")
-            print(f"val_loss: {valid_loss / len(valid_loader)}")
+            print(f"training_loss: {avg_train_loss}")
+            print(f"val_loss: {avg_valid_loss}")
             
             
         print('Finished Training')
