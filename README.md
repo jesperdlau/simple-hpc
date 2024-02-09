@@ -9,6 +9,8 @@ Example of a simple AI project integrated with DTU's hpc using a few MLOPS tools
 6. Activate the environment: source .venv/bin/activate
 7. Install the packages in the requirements file: pip install -r requirements.txt
 8. Create a Weights and Biases account. Create a project and paste the API key to the create_job.sh script. 
-9. Make sure the create_job.sh and submit.sh scripts are executable - In terminal type (for both): chmod +x create_job.sh
-10. Submit jobs to the HPC by typing: ./create_job.sh
-11. You can change the variables by for example: ./create_job.sh -a 10 -b 64
+9. Change the config.yaml file with correct project name and user name
+10. Make sure the the default values are correct in create_job.sh. 
+11. Make sure the create_job.sh and submit.sh scripts are executable - In terminal type (for both): chmod +x create_job.sh
+12. Submit jobs to the HPC by typing: ./create_job.sh
+13. You can change the variables by for example: ./create_job.sh -a 10 -b 64

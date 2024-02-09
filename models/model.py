@@ -65,8 +65,11 @@ class Trainer():
                 loss = self.criterion(output, target)
                 valid_loss += loss.item() * len(data)
             
+            # Average loss
             avg_train_loss = training_loss / len(train_loader.dataset)
             avg_valid_loss = valid_loss / len(valid_loader.dataset)
+            
+            # Logging
             wandb.log({"training_loss": avg_train_loss, "val_loss": avg_valid_loss})
             print(f"Epoch: {epoch} / {self.config.hyper.epochs}")
             print(f"training_loss: {avg_train_loss}")
