@@ -1,6 +1,11 @@
 import subprocess
 from omegaconf import OmegaConf
 import hydra
+import os
+
+# Set environment variable
+os.environ['WANDB_API_KEY'] = "your_api_key"
+print(os.environ['MY_VARIABLE'])
 
 # 
 @hydra.main(config_name="config.yaml", config_path="./", version_base="1.3")
