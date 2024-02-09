@@ -13,7 +13,7 @@
 ### CPU
 ### -- ask for number of CPU cores (default: 4) (at least 4x amount of gpus) --
 #BSUB -n 4
-#BSUB -R "rusage[mem=3GB]"
+#BSUB -R "rusage[mem=4GB]"
 #BSUB -R "span[hosts=1]"
 
 ### -- set walltime limit: hh:mm --  maximum 24 hours for GPU-queues right now
@@ -32,17 +32,14 @@
 #BSUB -e gpu_%J.err
 # -- end of LSF options --
 
-# # Set the W&B API key environmental variable
-# export WANDB_API_KEY="your_api_key_here"
-
 # Load the python module and activate the virtual environment
 module load python3/3.10.7
 source /zhome/2e/b/169155/projects/simple-hpc/.venv/bin/activate
 
 echo "Environment variables within job:"
-echo $arg1
-echo $arg2
-echo $WANDB_API_KEY
+echo "Epochs: $arg1"
+echo "Batch_size: $arg2"
+echo "wandb_api_key: $WANDB_API_KEY"
 
 # Run the python script
-python3 /zhome/2e/b/169155/projects/simple-hpc/train.py
+python3 /zhome/2e/b/169155/projects/simple-hpc/train.py hyper.epochs=$arg1 hyper.batch_size=$arg2
