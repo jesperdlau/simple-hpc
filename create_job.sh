@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Take arguments from CLI with flags
-while getopts ":ab" opt; do
+while getopts ":a:b:" opt; do
   case $opt in
     a) arg1="$OPTARG"
     ;;
