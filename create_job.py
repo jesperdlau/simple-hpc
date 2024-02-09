@@ -5,7 +5,7 @@ import os
 
 # Set environment variable
 os.environ['WANDB_API_KEY'] = "your_api_key"
-print(os.environ['MY_VARIABLE'])
+print(os.environ['WANDB_API_KEY'])
 
 # 
 @hydra.main(config_name="config.yaml", config_path="./", version_base="1.3")
@@ -26,7 +26,7 @@ def main(config):
                 -env "all" 
                 python3 my_program.py 
                 hyper.lr={config.hyper.lr} 
-                hyper.epoch={config.hyper.epochs}
+                hyper.epochs={config.hyper.epochs}
                 hyper.batch_size={config.hyper.batch_size}
                 hyper.hidden_dim={config.hyper.hidden_dim}
                 """
