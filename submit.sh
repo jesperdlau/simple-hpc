@@ -28,8 +28,8 @@
 #BSUB -N
 ### -- Specify the output and error file. %J is the job-id --
 ### -- -o and -e mean append, -oo and -eo mean overwrite --
-#BSUB -o gpu_%J.out
-#BSUB -e gpu_%J.err
+#BSUB -o lsf_logs/gpu_%J.out
+#BSUB -e lsf_logs/gpu_%J.err
 # -- end of LSF options --
 
 # Load the python module and activate the virtual environment

@@ -14,6 +14,8 @@ done
 
 # Set the W&B API key environmental variable
 export WANDB_API_KEY="your_api_key_here"
+export arg1=$arg1
+export arg2=$arg2
 
 echo "Environment variables outside job:"
 echo "Epochs: $arg1"
