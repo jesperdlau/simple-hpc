@@ -1,4 +1,7 @@
 #!/bin/bash
+# Defaults
+arg1=10
+arg2=32
 
 # Take arguments from CLI with flags
 while getopts ":a:b:" opt; do
