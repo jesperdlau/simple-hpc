@@ -11,15 +11,12 @@ import numpy as np
 def main(config):
     print(f"configuration: \n {OmegaConf.to_yaml(config)}")
     # Reformulate the config to be used in wandb
-    wandb_config = {"lr": config.hyper.lr, 
-                    "epochs": config.hyper.epochs,
-                    "batch_size": config.hyper.batch_size, 
-                    "hidden_dim": config.hyper.hidden_dim}
+    config_dict = OmegaConf.to_container(config)
     
     # project is the name of the project in wandb, entity is the username
     # You can also add tags, group etc. 
     wandb.init(project=config.wandb.project, 
-               config=wandb_config, 
+               config=config_dict, 
                entity=config.wandb.entity)
 
     # Usual PyTorch training code using a Trainer class
