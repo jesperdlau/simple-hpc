@@ -14,7 +14,7 @@ def main(config):
     
     command = f"""bsub -q {config.bsub.queue} 
                 -J {config.bsub.name} 
-                -gpu {config.bsub.gpu_num}
+                -gpu "num={config.bsub.gpu_num}"
                 -n {config.bsub.cpu_num}
                 -R "rusage[mem={config.bsub.cpu_mem}GB]"
                 -R "span[hosts=1]"
