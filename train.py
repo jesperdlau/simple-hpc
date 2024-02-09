@@ -15,8 +15,14 @@ def main(config):
                     "epochs": config.hyper.epochs,
                     "batch_size": config.hyper.batch_size, 
                     "hidden_dim": config.hyper.hidden_dim}
-    wandb.init(project=config.wandb.project, config=wandb_config, entity=config.wandb.entity)
+    
+    # project is the name of the project in wandb, entity is the username
+    # You can also add tags, group etc. 
+    wandb.init(project=config.wandb.project, 
+               config=wandb_config, 
+               entity=config.wandb.entity)
 
+    # Usual PyTorch training code using a Trainer class
     model = MLP(config)
     trainer = Trainer(config, model)
     torch.manual_seed(config.hyper.seed)
