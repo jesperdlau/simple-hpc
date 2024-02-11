@@ -165,3 +165,6 @@ outputs/
 data/
 *.out
 *.err
+
+# Secret files
+secret.txt
