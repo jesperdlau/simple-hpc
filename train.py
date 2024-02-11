@@ -15,9 +15,10 @@ def main(config):
     try:
         # project is the name of the project in wandb, entity is the username
         # You can also add tags, group etc.
-        wandb.init(project=config.wandb.project, 
+        run = wandb.init(project=config.wandb.project, 
                    config=OmegaConf.to_container(config), 
                    entity=config.wandb.entity)
+        print(f"wandb initiated with run id: {run.id} and run name: {run.name}")
     except Exception as e:
         print(f"\nCould not initiate wandb logger\nError: {e}")
 
