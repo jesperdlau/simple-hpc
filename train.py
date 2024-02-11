@@ -10,14 +10,16 @@ import numpy as np
 @hydra.main(config_name="config.yaml", config_path="./", version_base="1.3")
 def main(config):
     print(f"configuration: \n {OmegaConf.to_yaml(config)}")
-    # Reformulate the config to be used in wandb
-    config_dict = OmegaConf.to_container(config)
     
-    # project is the name of the project in wandb, entity is the username
-    # You can also add tags, group etc. 
-    wandb.init(project=config.wandb.project, 
-               config=config_dict, 
-               entity=config.wandb.entity)
+    # Initiate wandb logger
+    try:
+        # project is the name of the project in wandb, entity is the username
+        # You can also add tags, group etc.
+        wandb.init(project=config.wandb.project, 
+                   config=OmegaConf.to_container(config), 
+                   entity=config.wandb.entity)
+    except Exception as e:
+        print(f"\nCould not initiate wandb logger\nError: {e}")
 
     # Usual PyTorch training code using a Trainer class
     model = MLP(config)

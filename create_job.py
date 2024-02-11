@@ -3,9 +3,11 @@ from omegaconf import OmegaConf
 import hydra
 import os
 
-# Set environment variable
-os.environ['WANDB_API_KEY'] = "your_api_key"
-print(os.environ['WANDB_API_KEY'])
+# Set environment variable by reading from secret file
+# This is a good practice to avoid exposing your API key
+# You can also set this in your bashrc or zshrc file
+with open("secret.txt", "r") as f:
+    os.environ['WANDB_API_KEY'] = f.read().strip()
 
 # 
 @hydra.main(config_name="config.yaml", config_path="./", version_base="1.3")
@@ -24,7 +26,7 @@ def main(config):
                 -o lsf_logs/gpu_%J.out
                 -e lsf_logs/gpu_%J.err
                 -env "all" 
-                python3 my_program.py 
+                python3 train.py
                 hyper.lr={config.hyper.lr} 
                 hyper.epochs={config.hyper.epochs}
                 hyper.batch_size={config.hyper.batch_size}
