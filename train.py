@@ -24,14 +24,14 @@ def main(config):
     # Usual PyTorch training code using a Trainer class
     model = MLP(config)
     trainer = Trainer(config, model)
-    torch.manual_seed(config.hyper.seed)
+    torch.manual_seed(config.constants.seed)
     
     transform=transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize((0.1307,), (0.3081,))
         ])
-    train_dataset = datasets.MNIST(config.data_path, train=True, download=True, transform=transform)
-    valid_dataset = datasets.MNIST(config.data_path, train=False, transform=transform)
+    train_dataset = datasets.MNIST(config.constants.data_path, train=True, download=True, transform=transform)
+    valid_dataset = datasets.MNIST(config.constants.data_path, train=False, transform=transform)
     train_dataset = Subset(train_dataset, np.arange(10000))
     valid_dataset = Subset(valid_dataset, np.arange(10000))
     train_loader = DataLoader(train_dataset, batch_size=config.hyper.batch_size, shuffle=True)
