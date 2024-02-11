@@ -9,7 +9,7 @@ Example of a simple AI project integrated with DTU's hpc using a few MLOPS tools
 6. Activate the environment: source .venv/bin/activate
 7. Install the packages in the requirements file: pip install -r requirements.txt
 8. Create a Weights and Biases account. Create a project and get the wandb API key.
-9. In the project folder, create a file called secret.txt and paste the API key to it. 
+9. In the repository folder on the HPC, create a file called secret.txt and paste the API key to it. 
 10. Change the config.yaml file with correct project name and user name
 11. Submit jobs to the HPC by typing: python3 create_job.py
     1.  You can change the variables by for example: python3 create_job.py hyper.epochs=10 hyper.batch_size=64
